@@ -1,0 +1,51 @@
+"----------------------------------------------------------------------
+set nocompatible              " be iMproved, required
+
+call plug#begin()  "call vundle#begin('~/some/path/here')
+
+Plug 'majutsushi/tagbar'
+map <F9> :TagbarToggle<CR>  
+Plug 'scrooloose/nerdtree'
+nmap <F11>  :NERDTreeToggle<CR> 
+let NERDTreeWinPos=1
+Plug 'jlanzarotta/bufexplorer'
+nmap <A-w>  :BufExplorer<CR> 
+Plug 'Yggdroot/LeaderF'
+nmap <A-f>  :LeaderfFile<CR>
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-scripts/autoload_cscope.vim'
+Plug 'Valloric/YouCompleteMe'
+let g:ycm_confirm_extra_conf = 0
+" let g:syntastic_always_populate_loc_list = 1
+Plug 'vim-airline/vim-airline'   " 状态栏
+Plug 'terryma/vim-expand-region' " nomal下选择
+Plug 'tpope/vim-commentary'      " 注释
+"Plug 'godlygeek/csapprox'""   " vim gvim 颜色
+Plug 'flazz/vim-colorschemes'
+"Plug 'vim-scripts/c.vim'
+"Plug 'tpope/vim-surround'
+"Plug 'godlygeek/tabular'
+Plug 'airblade/vim-gitgutter'
+
+autocmd FileType c,cpp set commentstring=//\ %s
+call plug#end()            " required
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+"----------------------------------------------------------------------
+let g:tagbar_autoshowtag = 1
+let g:tagbar_left = 1
+autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()  
+"----------------------------------------------------------------------
+"----------------------------------------------------------------------
+"changes 
+let g:changes_hl_lines=1
+let g:changes_autocmd=1 
+let g:changes_verbose=0 
+hi DiffAdd term=bold ctermbg=4 guibg=DarkBlue 
+"----------------------------------------------------------------------
+"----------------------------------------------------------------------
+"----------------------------------------------------------------------
+"let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"nnoremap  <leader>s :call CscopeFind('s', expand('<cword>'))<CR>
+"nnoremap  <leader>c :call CscopeFind('c', expand('<cword>'))<CR>
+"----------------------------------------------------------------------

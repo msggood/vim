@@ -1,0 +1,80 @@
+set cursorline              " 突出显示当前行
+
+"----------------------------------------------------------------------
+let s:tmpMouse=1
+function! MouseToggle()
+    if s:tmpMouse == 1
+       set mouse-=a
+       let s:tmpMouse=0
+    else
+       set mouse+=a
+       let s:tmpMouse=1
+    endif
+endfunction 
+nmap <F2> :call MouseToggle()<CR>
+"----------------------------------------------------------------------
+map <A-e> <C-o>
+map <A-r> <C-i>
+"----------------------------------------------------------------------
+set tags=tags;
+function! UpdateCtags()
+    let curdir=getcwd()
+    while !filereadable("./tags")
+        cd ..
+        if getcwd() == "/"
+            break
+        endif
+    endwhile
+    if filewritable("./tags")
+        !ctags -R --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes
+    endif
+    execute ":cd " . curdir
+endfunction
+
+autocmd BufWritePost *.c,*.h,*.cpp call UpdateCtags()
+"nmap <F10> :call UpdateCtags()<CR>
+"----------------------------------------------------------------------
+
+set guioptions-=m  "remove menu bar  
+set guioptions-=T  "remove toolbar  
+set guioptions-=r  "remove right-hand scroll bar  
+set guioptions-=L  "remove left-hand scroll bar</span>  
+
+set incsearch " 搜索跳转
+set hlsearch  " 搜索高亮
+
+winpos 50 50
+"set lines=38 columns=180 
+set helplang=cn
+set fileformats=unix
+"set whichwrap=b,s,<,>,[,]     "跨行移动
+
+set t_Co=256
+set background=dark
+colorscheme solarized
+"colorscheme desert256v2
+"colorscheme molokai
+let g:molokai_original = 1
+"字体"set guifont=* 
+set guifont=Monospace\ 13
+
+"set mouse=a
+
+"语法高亮
+syntax enable
+syntax on
+
+"显示行号
+set number
+
+"自动缩进与C语言风格缩进
+"set autoindent
+"set cindent
+
+"缩进宽度
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+"switch case 对齐风格
+set cino=g0,:0
