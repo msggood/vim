@@ -3,30 +3,47 @@ set nocompatible              " be iMproved, required
 
 call plug#begin()  "call vundle#begin('~/some/path/here')
 
+"---------------------------------------窗口---------------------------------------------
 Plug 'majutsushi/tagbar'
 map <F9> :TagbarToggle<CR>  
 Plug 'scrooloose/nerdtree'
 nmap <F11>  :NERDTreeToggle<CR> 
 let NERDTreeWinPos=1
 Plug 'jlanzarotta/bufexplorer'
-nmap <A-w>  :BufExplorer<CR> 
+nmap <leader>w :BufExplorer<CR> 
+"---------------------------------------窗口---------------------------------------------
+"
+"---------------------------------------文件---------------------------------------------
 Plug 'Yggdroot/LeaderF'
 nmap <A-f>  :LeaderfFile<CR>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/autoload_cscope.vim'
-Plug 'Valloric/YouCompleteMe'
+"---------------------------------------文件---------------------------------------------
+"
+"---------------------------------------编辑---------------------------------------------
+Plug 'Valloric/YouCompleteMe'       
 let g:ycm_confirm_extra_conf = 0
-" let g:syntastic_always_populate_loc_list = 1
-Plug 'vim-airline/vim-airline'   " 状态栏
-Plug 'terryma/vim-expand-region' " nomal下选择
-Plug 'tpope/vim-commentary'      " 注释
-"Plug 'godlygeek/csapprox'""   " vim gvim 颜色
-Plug 'flazz/vim-colorschemes'
-"Plug 'vim-scripts/c.vim'
-"Plug 'tpope/vim-surround'
-"Plug 'godlygeek/tabular'
-Plug 'airblade/vim-gitgutter'
+nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>dc :YcmCompleter GoToDeclaration<CR>
+Plug 'rdnetto/YCM-Generator'
+                                    " let g:syntastic_always_populate_loc_list = 1
+Plug 'vim-airline/vim-airline'      " 状态栏
+Plug 'terryma/vim-expand-region'    " nomal下选择
+Plug 'tpope/vim-commentary'         " 注释
+                                    " Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'            " 对齐
+Plug 'terryma/vim-multiple-cursors' " 多光标
+"Plug 'rking/ag.vim'
+
+"---------------------------------------编辑---------------------------------------------
+"
+"--------------------------------------git---------------------------------------------
+Plug 'airblade/vim-gitgutter'       " 修改,git 对比
+Plug 'tpope/vim-fugitive'           " vim 运行git命令
+Plug 'cohama/agit.vim'              " git logs
+"Plug 'ctrlpvim/ctrlp.vim'
+"---------------------------------------编辑---------------------------------------------
 
 autocmd FileType c,cpp set commentstring=//\ %s
 call plug#end()            " required
