@@ -7,7 +7,7 @@ call plug#begin()  "call vundle#begin('~/some/path/here')
 Plug 'majutsushi/tagbar'
 map <F9> :TagbarToggle<CR>  
 Plug 'scrooloose/nerdtree'
-nmap <F11>  :NERDTreeToggle<CR> 
+nmap <F10>  :NERDTreeToggle<CR> 
 let NERDTreeWinPos=1
 Plug 'jlanzarotta/bufexplorer'
 nmap <leader>w :BufExplorer<CR> 
@@ -15,17 +15,21 @@ nmap <leader>w :BufExplorer<CR>
 "
 "---------------------------------------文件---------------------------------------------
 Plug 'Yggdroot/LeaderF'
-nmap <A-f>  :LeaderfFile<CR>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'vim-scripts/autoload_cscope.vim'
+nnoremap <Space>f :FZF<CR>
+"Plug 'vim-scripts/autoload_cscope.vim'
+"Plug 'mileszs/ack.vim'
+nmap <leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>g :Ag 
 "---------------------------------------文件---------------------------------------------
 "
 "---------------------------------------编辑---------------------------------------------
 Plug 'Valloric/YouCompleteMe'       
 let g:ycm_confirm_extra_conf = 0
-nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>dc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>dc :YcmCompleter GoToDeclaration<CR>
 Plug 'rdnetto/YCM-Generator'
                                     " let g:syntastic_always_populate_loc_list = 1
 Plug 'vim-airline/vim-airline'      " 状态栏
@@ -34,8 +38,8 @@ Plug 'tpope/vim-commentary'         " 注释
                                     " Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'            " 对齐
 Plug 'terryma/vim-multiple-cursors' " 多光标
-"Plug 'rking/ag.vim'
-
+Plug 'Raimondi/delimitMate'         " 自动补全空号等
+"Plug 'tpope/vim-repeat'
 "---------------------------------------编辑---------------------------------------------
 "
 "--------------------------------------git---------------------------------------------
