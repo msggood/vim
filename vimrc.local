@@ -1,4 +1,6 @@
 set cursorline              " 突出显示当前行
+"set cursorcolumn            "高亮当前列 
+
 
 "----------------------------------------------------------------------
 let s:tmpMouse=1
@@ -31,7 +33,7 @@ function! UpdateCtags()
     execute ":cd " . curdir
 endfunction
 
-nmap <F7> :call UpdateCtags()<CR>
+nmap <F5> :call UpdateCtags()<CR>
 "autocmd BufWritePost *.c,*.h,*.cpp call UpdateCtags()
 "map <c-]> g<c-]>
 function! LoadCscope()

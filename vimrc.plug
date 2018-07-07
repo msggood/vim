@@ -38,17 +38,37 @@ Plug 'tpope/vim-commentary'         " 注释
                                     " Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'            " 对齐
 Plug 'terryma/vim-multiple-cursors' " 多光标
-Plug 'Raimondi/delimitMate'         " 自动补全空号等
+Plug 'Raimondi/delimitMate'         " 自动补全(),""等
 "Plug 'tpope/vim-repeat'
+Plug 'Yggdroot/indentLine'          "对齐线"
+Plug 'SirVer/ultisnips'             "代码片段"
+Plug 'honza/vim-snippets'
 "---------------------------------------编辑---------------------------------------------
 "
+"---------------------------------------颜色---------------------------------------------
+"Plug 'sentientmachine/erics_vim_syntax_and_color_highlighting'
+
+Plug 'justinmk/vim-sneak'
+""---------------------------------------颜色---------------------------------------------
+
 "--------------------------------------git---------------------------------------------
 Plug 'airblade/vim-gitgutter'       " 修改,git 对比
 Plug 'tpope/vim-fugitive'           " vim 运行git命令
 Plug 'cohama/agit.vim'              " git logs
 "Plug 'ctrlpvim/ctrlp.vim'
 "---------------------------------------编辑---------------------------------------------
-
+"---------------------------------------编译---------------------------------------------
+Plug 'skywind3000/asyncrun.vim'     "异步 运行"
+"---------------------------------------编译---------------------------------------------
+let g:asyncrun_open = 8
+function! MakeProject()
+    execute ":w"
+    execute ":AsyncRun make"
+endfunction
+map <F7> :call MakeProject()<CR>  
+map <F6> :cclose<CR>  ":cn,下一个错误，:cp,上一个错误" 
+"---------------------------------------编译---------------------------------------------
+"
 autocmd FileType c,cpp set commentstring=//\ %s
 call plug#end()            " required
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
