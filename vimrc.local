@@ -31,10 +31,12 @@ function! UpdateCtags()
         !ctags -R --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes
     endif
     execute ":cd " . curdir
+    execute ":UpdateTypesFile "
 endfunction
 
 nmap <F5> :call UpdateCtags()<CR>
 "autocmd BufWritePost *.c,*.h,*.cpp call UpdateCtags()
+"autocmd BufReadPre *.c,*.h,*.cpp call UpdateCtags()
 "map <c-]> g<c-]>
 function! LoadCscope()
   let db = findfile("cscope.out", ".;")
@@ -61,7 +63,7 @@ set guioptions-=L  "remove left-hand scroll bar</span>
 set incsearch " 搜索跳转
 set hlsearch  " 搜索高亮
 
-winpos 50 50
+winpos 1 1
 "set lines=38 columns=180 
 set helplang=cn
 
@@ -69,11 +71,8 @@ set fileformats=unix "or set ff=unix
 set t_Co=256
 set background=dark
 colorscheme solarized
-"colorscheme desert256v2
-"colorscheme molokai
-let g:molokai_original = 1
 "字体"set guifont=* 
-set guifont=Monospace\ 13
+set guifont=Monospace\ 14
 set clipboard=unnamed,unnamedplus
 set showcmd
 "set mouse=a
@@ -91,9 +90,9 @@ set number
 "set cindent
 
 "缩进宽度
-set tabstop=4
+set tabstop=4  "将tab键宽度定义为4"
 set shiftwidth=4
-set expandtab
+set expandtab  "用空格代替tab
 
 "switch case 对齐风格
 set cino=g0,:0
