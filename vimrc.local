@@ -67,6 +67,8 @@ winpos 1 1
 "set lines=38 columns=180 
 set helplang=cn
 
+set updatetime=100
+
 set fileformats=unix "or set ff=unix
 set t_Co=256
 set background=dark

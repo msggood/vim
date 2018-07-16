@@ -67,6 +67,7 @@ call plug#end()            " required
 "----------------------------------------------------------------------
 let g:tagbar_autoshowtag = 1
 let g:tagbar_left = 1
+let g:tagbar_sort = 0
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()  
 "----------------------------------------------------------------------
 "----------------------------------------------------------------------
