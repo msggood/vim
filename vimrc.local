@@ -15,8 +15,8 @@ function! MouseToggle()
 endfunction 
 nmap <F2> :call MouseToggle()<CR>
 "----------------------------------------------------------------------
-map <A_e> <C-o>
-map <A_r> <C-i>
+" map <A_e> <C-o>
+" map <A_r> <C-i>
 "----------------------------------------------------------------------
 set tags=tags;
 function! UpdateCtags()
