@@ -37,23 +37,23 @@ endfunction
 nmap <F5> :call UpdateCtags()<CR>
 "autocmd BufWritePost *.c,*.h,*.cpp call UpdateCtags()
 "autocmd BufReadPre *.c,*.h,*.cpp call UpdateCtags()
-"map <c-]> g<c-]>
-function! LoadCscope()
-  let db = findfile("cscope.out", ".;")
-  if (!empty(db))
-    let path = strpart(db, 0, match(db, "/cscope.out$"))
-    set nocscopeverbose " suppress 'duplicate connection' error
-    exe "cs add " . db . " " . path
-    set cscopeverbose
-  " else add the database pointed to by environment variable
-  elseif $CSCOPE_DB != ""
-    cs add $CSCOPE_DB
+if has("cscope")
+  set csprg=/usr/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+      cs add cscope.out
   endif
-endfunction
-au BufEnter /* call LoadCscope()
-silent! map <unique> <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-silent! map <unique> <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+  set csverb
+endif
+
+nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>
 "----------------------------------------------------------------------
+map <C-s> :w<CR>
+map <C-q> :q<CR>
 
 set guioptions-=m  "remove menu bar  
 set guioptions-=T  "remove toolbar  
@@ -72,13 +72,17 @@ set updatetime=100
 set fileformats=unix "or set ff=unix
 set t_Co=256
 set background=dark
+
+set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencoding=utf-8
+set encoding=utf-8
+
 colorscheme solarized
 "字体"set guifont=* 
 set guifont=Monospace\ 14
 set clipboard=unnamed,unnamedplus
 set showcmd
 "set mouse=a
-
 "语法高亮
 syntax enable
 syntax on

@@ -10,7 +10,7 @@ Plug 'scrooloose/nerdtree'
 nmap <F10>  :NERDTreeToggle<CR> 
 let NERDTreeWinPos=1
 Plug 'jlanzarotta/bufexplorer'
-nmap <leader>2 :BufExplorer<CR> 
+nmap <leader>w :BufExplorer<CR> 
 "---------------------------------------窗口---------------------------------------------
 "
 "---------------------------------------文件---------------------------------------------
@@ -33,7 +33,7 @@ autocmd FileType c,cpp set commentstring=//\ %s
 Plug 'godlygeek/tabular'            " 对齐
 Plug 'terryma/vim-multiple-cursors' " 多光标
 Plug 'Raimondi/delimitMate'         " 自动补全(),""等
-Plug 'Yggdroot/indentLine'          "对齐线"
+" Plug 'Yggdroot/indentLine'          "对齐线"
 Plug 'SirVer/ultisnips'             "代码片段"
 Plug 'honza/vim-snippets'           
 let g:UltiSnipsExpandTrigger="<F2>"
@@ -48,8 +48,12 @@ Plug 'vim-scripts/TagHighlight' "vi ~/.vim/plugged/TagHighlight/plugin/TagHighli
 
 "--------------------------------------git---------------------------------------------
 Plug 'airblade/vim-gitgutter'       " 修改,git 对比
+nmap ]c <Plug>GitGutterNextHunk
+nmap [c <Plug>GitGutterPrevHunk
 Plug 'tpope/vim-fugitive'           " vim 运行git命令
-Plug 'cohama/agit.vim'              " git logs
+nmap <F3> :Gstatus<CR>
+nmap <F4> :Gvdiff<CR>
+Plug 'cohama/agit.vim'              ":Agit  ----git logs
 "---------------------------------------git---------------------------------------------
 "
 "---------------------------------------编译---------------------------------------------
@@ -59,11 +63,12 @@ function! MakeProject()
     execute ":w"
     execute ":AsyncRun make"
 endfunction
-map <F7> :call MakeProject()<CR>  ":cn,下一个错误，:cp,上一个错误" 
+map <F7> :call MakeProject()<CR>":cn,下一个错误，:cp,上一个错误" 
 map <F6> :cclose<CR>  
 "---------------------------------------编译---------------------------------------------
 "other
 Plug 'iamcco/dict.vim'             "翻译"
+map <c-A-S-a> <Plug>DictWSearch
 "Plug 'mileszs/ack.vim' 
 "Plug 'tpope/vim-surround'
 call plug#end()            " required
@@ -74,8 +79,5 @@ let g:tagbar_left = 1
 let g:tagbar_sort = 0
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()  
 "----------------------------------------------------------------------
-"----------------------------------------------------------------------
 "let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"nnoremap  <leader>s :call CscopeFind('s', expand('<cword>'))<CR>
-"nnoremap  <leader>c :call CscopeFind('c', expand('<cword>'))<CR>
 "----------------------------------------------------------------------
