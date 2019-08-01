@@ -37,8 +37,8 @@ Plug 'Raimondi/delimitMate'         " 自动补全(),""等
 Plug 'SirVer/ultisnips'             "代码片段"
 Plug 'honza/vim-snippets'           
 let g:UltiSnipsExpandTrigger="<F2>"
-let g:UltiSnipsJumpForwardTrigger="<F3>"
-let g:UltiSnipsJumpBackwardTrigger="<F4>"
+"let g:UltiSnipsJumpForwardTrigger="<F3>"
+"let g:UltiSnipsJumpBackwardTrigger="<F4>"
 "Plug 'aperezdc/vim-template' 
 "---------------------------------------编辑---------------------------------------------
 "

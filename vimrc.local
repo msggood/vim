@@ -2,18 +2,7 @@ set cursorline              " 突出显示当前行
 "set cursorcolumn            "高亮当前列 
 
 
-"----------------------------------------------------------------------
-let s:tmpMouse=1
-function! MouseToggle()
-    if s:tmpMouse == 1
-       set mouse-=a
-       let s:tmpMouse=0
-    else
-       set mouse+=a
-       let s:tmpMouse=1
-    endif
-endfunction 
-nmap <F2> :call MouseToggle()<CR>
+set mouse+=a
 "----------------------------------------------------------------------
 " map <A_e> <C-o>
 " map <A_r> <C-i>
@@ -102,3 +91,6 @@ set expandtab  "用空格代替tab
 
 "switch case 对齐风格
 set cino=g0,:0
+
+source $VIMRUNTIME/mswin.vim
+behave mswin
