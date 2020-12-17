@@ -22,9 +22,9 @@ nmap <leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 "---------------------------------------文件---------------------------------------------
 "
 "---------------------------------------编辑---------------------------------------------
-Plug 'Valloric/YouCompleteMe'       
-let g:ycm_confirm_extra_conf = 0
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"Plug 'Valloric/YouCompleteMe'       
+"let g:ycm_confirm_extra_conf = 0
+"nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "Plug 'rdnetto/YCM-Generator'
 Plug 'vim-airline/vim-airline'      " 状态栏
 Plug 'terryma/vim-expand-region'    " nomal下选择
